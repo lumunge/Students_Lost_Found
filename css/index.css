@@ -1,0 +1,112 @@
+body {
+  background-color: #333;
+  height: 100vh;
+}
+
+.content {
+  background-color: #333;
+  box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  height: 500px;
+  width: 500px;
+  text-align: center;
+  padding: 20px;
+  margin: auto;
+}
+.content h3 {
+  font-size: 2rem;
+  color: #fdf5e6;
+  font-family: poppins;
+}
+.content p,
+label {
+  color: #fff;
+  font-size: 1.3rem;
+}
+ul {
+  list-style: none;
+  margin: 20px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+li {
+  float: left;
+}
+li a {
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: poppins;
+}
+li a:hover:not(.active) {
+  background-color: #111;
+  transition: all 1s ease-in;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 10px;
+}
+.active {
+  background-color: #4caf50;
+}
+h3 {
+  text-align: center;
+  font-size: 24px;
+  font-family: sans-serif;
+}
+.lastGroup {
+  color: red;
+}
+.formation {
+  margin: auto;
+  width: 50%;
+  border: 2px solid #333;
+  padding: 20px;
+  text-align: center;
+}
+.formation input {
+  width: 70%;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: transparent;
+}
+.formation button {
+  background-color: transparent;
+  padding: 5px;
+  font-size: 1.5rem;
+  font-family: poppins;
+  border-radius: 5px;
+  border: 1px solid #fff;
+}
+.btn {
+  border: 1px solid #fff;
+  font-size: 1.3rem;
+  text-transform: capitalize;
+  color: #000;
+}
+.btn:hover {
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 1s ease-out;
+  color: #fff;
+}
+
+.form-group .regLink a:hover {
+  color: #00bfff;
+  text-decoration: none;
+}
+
+footer {
+  color: #fff;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+table th {
+  text-decoration: underline;
+}
