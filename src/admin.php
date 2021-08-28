@@ -7,68 +7,67 @@ error_reporting(E_ERROR);
 $firstName = $lastName = $regNo = "";
 
 // Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-    if(empty($_POST['firstName']) || empty($_POST['lastName']) || empty($_POST['regNo'])){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST['firstName']) || empty($_POST['lastName']) || empty($_POST['regNo'])) {
         $sweet = 'error';
         $feedback = 'Please enter all the details';
     }
 
-// Validate First Name
-if(empty(trim($_POST["firstName"]))){
-    $sweet = 'error';
-    $feedback = 'Enter FirstName.';
-}else{
-$firstName = trim($_POST["firstName"]);
-}
+    // Validate First Name
+    if (empty(trim($_POST["firstName"]))) {
+        $sweet = 'error';
+        $feedback = 'Enter FirstName.';
+    } else {
+        $firstName = trim($_POST["firstName"]);
+    }
 
-// Validate Last Name
-if(empty(trim($_POST["lastName"]))){
-    $sweet = 'error';
-    $feedback = 'Enter Last Name.';
-}else{
-$lastName = trim($_POST["lastName"]);
-} 
+    // Validate Last Name
+    if (empty(trim($_POST["lastName"]))) {
+        $sweet = 'error';
+        $feedback = 'Enter Last Name.';
+    } else {
+        $lastName = trim($_POST["lastName"]);
+    }
 
-// Validate Registration Number
-if(empty(trim($_POST["regNo"]))){
-    $sweet = 'error';
-    $feedback = 'Enter registration number';
-}else{
-$regNo = trim($_POST["regNo"]);
-} 
+    // Validate Registration Number
+    if (empty(trim($_POST["regNo"]))) {
+        $sweet = 'error';
+        $feedback = 'Enter registration number';
+    } else {
+        $regNo = trim($_POST["regNo"]);
+    }
 
-// Check input errors before inserting in database
-if(empty($sweet)){
+    // Check input errors before inserting in database
+    if (empty($sweet)) {
 
 // Prepare an insert statement
-$sql = "INSERT INTO lostids (firstName, lastName, regNo) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO lostids (firstName, lastName, regNo) VALUES (?, ?, ?)";
 
-if($stmt = mysqli_prepare($conn, $sql)){
-// Bind variables to the prepared statement as parameters
-mysqli_stmt_bind_param($stmt, "sss", $param_firstName, $param_lastName, $param_regNo);
+        if ($stmt = mysqli_prepare($conn, $sql)) {
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "sss", $param_firstName, $param_lastName, $param_regNo);
 
-// Set parameters
-$param_firstName = $firstName;
-$param_lastName = $lastName;
-$param_regNo = $regNo;
+            // Set parameters
+            $param_firstName = $firstName;
+            $param_lastName = $lastName;
+            $param_regNo = $regNo;
 
-// Attempt to execute the prepared statement
-if(mysqli_stmt_execute($stmt)){
-    $sweet = "success";
-    $feedback =  "The Identification card was added successfully";
-} else{
-    $sweet = 'error';
-    $feedback =  "Something went wrong. Please try again later.";
-}
-}
+            // Attempt to execute the prepared statement
+            if (mysqli_stmt_execute($stmt)) {
+                $sweet = "success";
+                $feedback =  "The Identification card was added successfully";
+            } else {
+                $sweet = 'error';
+                $feedback =  "Something went wrong. Please try again later.";
+            }
+        }
 
-// Close statement
-mysqli_stmt_close($stmt);
-}
+        // Close statement
+        mysqli_stmt_close($stmt);
+    }
 
-// Close connection
-mysqli_close($conn);
+    // Close connection
+    mysqli_close($conn);
 }
 ?>
 
@@ -91,14 +90,13 @@ mysqli_close($conn);
 <main>
 <?php
 // $sweet = "";
-if($sweet == 'error'){
+if ($sweet == 'error') {
     echo '<script>swal("Error", "'.$feedback.'", "error")</script>';
-}elseif($sweet == 'success'){
+} elseif ($sweet == 'success') {
     echo '<script>swal("Success", "'.$feedback.'", "success")</script>';
 }
 ?>
 <ul>
-    <li><a href="admin.php">Home</a></li>
     <li><a href="pendingRequests.php">Lost ids</a></li>
     <li><a href="foundIds.php">Found ids</a></li>
     <li><a href="adminBox.php">Inbox</a></li>
@@ -134,7 +132,9 @@ if($sweet == 'error'){
 </div>
 </form>
 </div> 
-<footer>All Rights Reserved Copyrights &copy; 2020.</footer>
+<?php
+include 'footer.php';
+?>
 </div> 
 </div>
 </div>

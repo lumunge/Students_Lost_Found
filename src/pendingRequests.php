@@ -20,7 +20,6 @@ include 'functions.php';
   </head>
   <body>
   <ul>
-    <li><a href="admin.php">Home</a></li>
     <li><a href="pendingRequests.php">Lost ids</a></li>
     <li><a href="foundIds.php">Found ids</a></li>
     <li><a href="adminBox.php">Inbox</a></li>
@@ -33,8 +32,9 @@ include 'functions.php';
       <div class="container">
         <?php
         $query = "SELECT * FROM `lostids`;";
-        if(count(fetchAll($query)) >
-        0){ foreach(fetchAll($query) as $row){ ?>
+        if (count(fetchAll($query)) >
+        0) {
+            foreach (fetchAll($query) as $row) { ?>
 
         <h1 class="jumbotron-heading">
           <?php echo $row['firstName'],  $row['lastName']; ?>
@@ -50,16 +50,17 @@ include 'functions.php';
         
         
         <hr>
-        <?php 
+        <?php
                }
-            }else{
-                echo 'No pending requests';
-            }
+        } else {
+            echo 'No pending requests';
+        }
     ?>
       </div>
     </section>
-    <footer>All Rights Reserved Copyrights &copy; 2020.</footer>
-
+    <?php
+include 'footer.php';
+?>
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

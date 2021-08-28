@@ -1,65 +1,60 @@
 <?php
 // Initialize the session
 session_start();
-
 // Include config file
 require_once "dbconfig.php";
-
 // Define variables and initialize with empty values
 $admin = $student = $message = $sweet = "";
-
 // Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-    if(empty($_POST['admin']) || empty($_POST['student']) || empty($_POST['message'])){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST['admin']) || empty($_POST['student']) || empty($_POST['message'])) {
         $sweet = 'error';
         $feedback = 'Please fill in all details.';
     }
-
     if (isset($_POST['admin'])) {
-      $admin = $_POST['admin'];
+        $admin = $_POST['admin'];
     }
     if (isset($_POST['student'])) {
-      $student = $_POST['student'];
+        $student = $_POST['student'];
     }
     if (isset($_POST['message'])) {
-      $message = $_POST['message'];
+        $message = $_POST['message'];
     }
 
 
-// Check input errors before inserting in database
-if(empty($sweet)){
+    // Check input errors before inserting in database
+    if (empty($sweet)) {
 
 // Prepare an insert statement
-$sql = "INSERT INTO adminmessages (admin, student, message) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO adminmessages (admin, student, message) VALUES (?, ?, ?)";
 
-if($stmt = mysqli_prepare($conn, $sql)){
-// Bind variables to the prepared statement as parameters
-mysqli_stmt_bind_param($stmt, "sss", $param_admin, $param_student, $param_message);
+        if ($stmt = mysqli_prepare($conn, $sql)) {
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "sss", $param_admin, $param_student, $param_message);
 
-// Set parameters
-$param_admin = $admin;
-$param_student = $student;
-$param_message = $message;
+            // Set parameters
+            $param_admin = $admin;
+            $param_student = $student;
+            $param_message = $message;
 
-// Attempt to execute the prepared statement
-if(mysqli_stmt_execute($stmt)){
-  $sweet = 'success';
-        $feedback = 'Your message was sent successfully';
-// Redirect to login page
-header("location: adminBox.php");
-} else{
-  $sweet = 'error';
-        $feedback = 'Something went wrong. Please try again later.';
-}
-}
+            // Attempt to execute the prepared statement
+            if (mysqli_stmt_execute($stmt)) {
+                $sweet = 'success';
+                $feedback = 'Your message was sent successfully';
+                // Redirect to login page
+                header("location: adminBox.php");
+            } else {
+                $sweet = 'error';
+                $feedback = 'Something went wrong. Please try again later.';
+            }
+        }
 
-// Close statement
-mysqli_stmt_close($stmt);
-}
+        // Close statement
+        mysqli_stmt_close($stmt);
+    }
 
-// Close connection
-mysqli_close($conn);
+    // Close connection
+    mysqli_close($conn);
 }
 ?>
 
@@ -88,9 +83,9 @@ mysqli_close($conn);
 
 <?php
 // $sweet = "";
-if($sweet == 'error'){
+if ($sweet == 'error') {
     echo "<script>swal('Error', '".$feedback."')</script>";
-}elseif($sweet == 'success'){
+} elseif ($sweet == 'success') {
     echo "<script>swal('Success', '".$feedback."')</script>";
 }
 ?>
@@ -117,7 +112,7 @@ if($sweet == 'error'){
 <input type="submit" class="btn btn-primary" value="Submit">
 <input type="reset" class="btn btn-default" value="Reset">
 </div>
-<p id="">Back to Inbox <a href="adminBox.php">Login here</a>.</p>
+<p id="">Back to <a href="adminBox.php">Inbox</a>.</p>
 </form>
 </div> 
 <p class="futa">All Rights Reserved Copyrights &copy; mafundiservices 2019.</p>
@@ -125,8 +120,6 @@ if($sweet == 'error'){
 </div>
 </div>
 </main>  
-
-
 <!--Optional Javascript-->
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

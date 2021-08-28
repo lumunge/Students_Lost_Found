@@ -25,15 +25,14 @@ session_start();
   </head>
   <body>
 
-    <ul>
-        <li><a href="studentDash.php">Home</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="inbox.php">Inbox</a></li>
-        <li style="float: right;" class="trigger">
-        <a href="logout.php">Log out</a>
-        </li>
-        </ul>
-
+  <ul>
+    <li><a href="pendingRequests.php">Lost ids</a></li>
+    <li><a href="foundIds.php">Found ids</a></li>
+    <li><a href="adminBox.php">Inbox</a></li>
+    <li style="float: right;">
+    <a href="logout.php">Logout</a>
+    </li>
+  </ul>
     <div class="formation">
             <!--Retrieving data to the table from the database.-->
             <?php
@@ -59,8 +58,9 @@ $query_run = mysqli_query($conn, $query);
               <tbody>
                 <!--Table from which values will be retrieved to a text box in register_edit.php-->
                 <?php
-if(mysqli_num_rows($query_run) >
-                0) { while($row = mysqli_fetch_assoc($query_run)) { ?>
+if (mysqli_num_rows($query_run) >
+                0) {
+    while ($row = mysqli_fetch_assoc($query_run)) { ?>
                 <tr>
                   <td><?php echo $row['msg_id']; ?></td>
                   <td><?php echo $row['username']; ?></td>
@@ -85,10 +85,8 @@ if(mysqli_num_rows($query_run) >
                 </tr>
                 <?php
 }
-}
-else
-{
-echo "No record was found";
+} else {
+    echo "No record was found";
 }
 ?>
               </tbody>

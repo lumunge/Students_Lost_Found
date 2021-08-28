@@ -17,7 +17,6 @@
 <body>
 <main>
 <ul>
-    <li><a href="admin.php">Home</a></li>
     <li><a href="pendingRequests.php">Lost ids</a></li>
     <li><a href="foundIds.php">Found ids</a></li>
     <li><a href="adminBox.php">Inbox</a></li>
