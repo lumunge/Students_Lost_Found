@@ -37,7 +37,7 @@ session_start();
     <div class="formation">
             <!--Retrieving data to the table from the database.-->
             <?php
-$conn = mysqli_connect("localhost", "root", "", "studentid");
+$conn = mysqli_connect("localhost", "root", "", "students_id");
 $query = "SELECT * FROM studentmessages";
 $query_run = mysqli_query($conn, $query);
 ?>

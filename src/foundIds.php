@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +30,7 @@
 <div class="table-responsive">
     <!--Retrieving data to the table from the database.-->
     <?php
-    $conn = mysqli_connect("localhost", "root", "", "studentid");
+    $conn = mysqli_connect("localhost", "root", "", "students_id");
     $query = "SELECT * FROM foundids";
     $query_run = mysqli_query($conn, $query);
     ?>
