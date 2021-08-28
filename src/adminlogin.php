@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Client Login Page |</title>
+<title>| Admin Login |</title>
 <!-- Bootstrap Stylesheet -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <!-- sweet alert  -->
@@ -147,7 +147,7 @@ if ($sweet == 'error') {
 
 </div>
 </div>
-<footer>All Rights Reserved Copyrights &copy; 2020.</footer>
+<?php include "footer.php" ?>
 </div>
 </div>
 </main>  

@@ -94,30 +94,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
 <meta charset="UTF-8">
 <title>Student Login Page |</title>
-<!-- Bootstrap Stylesheet -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<!-- sweet alert  -->
-<link rel="stylesheet" href="css/sweetalert.css">
-<script src="js/sweetalert.js"></script>
-<script src="js/jquery.js"></script>
-<!-- FontAwesome -->
-<link rel="stylesheet" href="css/all.min.css" />
-<link rel="stylesheet" href="css/fontawesome.min.css" />
-<!--Animate Css-->
-<link rel="stylesheet" href="css/animate.min.css">
-<!-- Css -->
-<link rel="stylesheet" href="css/index.css">
+<?php
+    include "styles.php"
+?>
 </head>
 <body>
 <main>
-<ul>
-<li><a href="index.php">Home</a></li>
-<li><a href="about.php">About</a></li>
-<li style="float: right;">
-<a href="adminlogin.php">Admin Login</a>
-</li>
-</ul>
-
+<?php include "header.php" ?>
 <?php
 if ($sweet == 'error') {
     echo "<script>swal('Error', '".$feedback."')</script>";
@@ -157,9 +140,6 @@ include 'footer.php';
 </main>  
 
 <!--Optional Javascript-->
-<script src="js/jquery.js"></script>
-<script src="js/sweetalert.js"></script>
-<script src="js/jquery-3.4.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<?php include "javascript.php" ?>
 </body>
 </html>

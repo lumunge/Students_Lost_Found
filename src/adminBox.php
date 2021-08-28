@@ -95,5 +95,8 @@ if (mysqli_num_rows($query_run) >
         </div>
       </div>
     </div>
+    <?php
+include 'footer.php';
+?>
   </body>
 </html>

@@ -47,11 +47,9 @@
     <tbody>
     <!--Table from which values will be retrieved to a text box in register_edit.php-->
     <?php
-    if(mysqli_num_rows($query_run) > 0)
-    {
-    while($row = mysqli_fetch_assoc($query_run))
-    {
-    ?>
+    if (mysqli_num_rows($query_run) > 0) {
+        while ($row = mysqli_fetch_assoc($query_run)) {
+            ?>
     <tr>
     <td><?php echo $row['id']; ?></td>
     <td><?php echo $row['firstName']; ?></td>
@@ -60,11 +58,9 @@
     <td><?php echo $row['date']; ?></td>
     </tr>
     <?php
-    }
-    }
-    else
-    {
-    echo "No record was found";
+        }
+    } else {
+        echo "No record was found";
     }
     ?>
     </tbody>
@@ -73,8 +69,9 @@
     </div>
     </div>  
 </main>  
-<footer>All Rights Reserved Copyrights &copy; 2020.</footer>
-
+<?php
+include 'footer.php';
+?>
 </body>
 
 <!--Optional Javascript-->
